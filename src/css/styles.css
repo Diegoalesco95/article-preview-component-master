@@ -1,0 +1,248 @@
+html {
+  font-family: "Manrope", sans-serif;
+  font-size: 13px;
+}
+
+body {
+  background-color: #ecf2f8;
+}
+
+.container {
+  width: 100%;
+  height: 100vh;
+}
+
+.card {
+  width: 24rem;
+  height: 40rem;
+  margin: 4rem auto;
+  display: flex;
+  flex-direction: column;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0.2rem 0.8rem 2rem #0000001a;
+  position: relative;
+  background-color: white;
+}
+.card__image {
+  width: 100%;
+  height: 100%;
+  max-height: 17rem;
+  overflow: hidden;
+}
+.card__image img {
+  height: 20rem;
+  max-width: 100%;
+  display: block;
+  cursor: pointer;
+  transition: 0.5s;
+}
+.card__image img:hover {
+  transform: scale(1.5);
+}
+.card__description {
+  padding: 1.2rem 2.2rem;
+  line-height: 1.5;
+}
+.card__description h1 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #48556a;
+}
+.card__description p {
+  font-weight: 500;
+  font-size: 1rem;
+  color: #6d7f97;
+}
+.card__actions {
+  height: 5rem;
+  padding: 0.8rem 2.2rem;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.card__actions .avatar {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  margin-right: 1rem;
+}
+.card__actions .avatar img {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+}
+.card__actions .information p {
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 0.3rem 0;
+  color: #48556a;
+}
+.card__actions .information small {
+  color: #9eafc2;
+  font-size: 0.9rem;
+}
+.card__actions--shared {
+  height: 5rem;
+  padding: 0.8rem 2.2rem;
+  display: flex;
+  align-items: center;
+  opacity: 0;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  transform: translateY(7rem);
+  background-color: #48556a;
+}
+.card__actions--shared .shared-options {
+  display: flex;
+  align-items: center;
+}
+.card__actions--shared .shared-options p {
+  letter-spacing: 0.4rem;
+  color: #9eafc2;
+}
+.card__actions--shared .shared-options a:hover {
+  cursor: pointer;
+}
+.card__actions--shared .shared-options a i {
+  margin-left: 1.2rem;
+  font-size: 1.5rem;
+  color: #ecf2f8;
+}
+@media only screen and (min-width: 1024px) {
+  .card {
+    width: 60rem;
+    height: 25rem;
+    display: grid;
+    grid-template-columns: 0.7fr 1fr;
+    grid-template-rows: 0.8fr 0.4fr;
+    overflow: initial;
+  }
+  .card__image {
+    max-height: 25rem;
+    grid-column: 1/2;
+    grid-row: 1/3;
+  }
+  .card__image img {
+    height: 25rem;
+  }
+  .card__description {
+    grid-column: 2/3;
+    grid-row: 1/2;
+    padding: 1.5rem 3rem;
+  }
+  .card__description h1 {
+    font-size: 1.6rem;
+  }
+  .card__description p {
+    font-size: 1.1rem;
+  }
+  .card__actions {
+    position: relative;
+    grid-column: 2/3;
+    grid-row: 2/3;
+    padding: 0rem 3rem 1.7rem;
+  }
+  .card__actions .avatar {
+    width: 4rem;
+    height: 4rem;
+  }
+  .card__actions .avatar img {
+    width: 4rem;
+    height: 4rem;
+  }
+  .card__actions .information p {
+    font-size: 1.2rem;
+    margin: 0.4rem 0;
+  }
+  .card__actions .information small {
+    font-size: 1rem;
+  }
+  .card__actions .share-button {
+    width: 3rem;
+    height: 3rem;
+    font-size: 1.4rem;
+  }
+  .card__actions--shared {
+    height: 3rem;
+    width: 13rem;
+    position: absolute;
+    bottom: 8rem;
+    left: 47rem;
+    transform: translateY(7rem);
+    border-radius: 1rem;
+  }
+  .card__actions--shared::before {
+    content: "";
+    width: 1.3rem;
+    height: 1.3rem;
+    position: absolute;
+    bottom: -0.6rem;
+    left: 45%;
+    background-color: #48556a;
+    transform: rotate(45deg);
+  }
+}
+
+.share-button {
+  position: relative;
+  z-index: 1;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: none;
+  margin-left: auto;
+  border-radius: 50%;
+  color: #6d7f97;
+  font-size: 1.2rem;
+  background-color: #ecf2f8;
+  outline: none;
+  cursor: pointer;
+}
+.share-button:hover {
+  color: #ecf2f8;
+  background-color: #6d7f97;
+}
+
+@keyframes shareOpen {
+  0% {
+    transform: translateY(7rem);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes shareClose {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(7rem);
+    opacity: 0;
+  }
+}
+.attribution {
+  height: 4rem;
+  padding: 2rem;
+  font-size: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #9eafc2;
+}
+.attribution span {
+  color: #ecf2f8;
+}
+.attribution a {
+  margin: 0 0.4rem;
+  text-decoration: none;
+  color: #3e52a3;
+}
