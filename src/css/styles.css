@@ -64,38 +64,21 @@ body {
   padding: 0.8rem 2.2rem;
   display: flex;
   align-items: center;
-}
-.card__actions .shared-options {
-  display: none;
-  align-items: center;
-  animation: 0.3s shareAnimation backwards;
-}
-.card__actions .shared-options p {
-  letter-spacing: 0.4rem;
-  color: #9eafc2;
-}
-.card__actions .shared-options a:hover {
-  cursor: pointer;
-}
-.card__actions .shared-options a i {
-  margin-left: 1.2rem;
-  font-size: 1.5rem;
-  color: #ecf2f8;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 .card__actions .avatar {
   width: 3rem;
   height: 3rem;
   border-radius: 50%;
   margin-right: 1rem;
-  animation: 0.3s shareAnimation backwards;
 }
 .card__actions .avatar img {
   width: 3rem;
   height: 3rem;
   border-radius: 50%;
-}
-.card__actions .information {
-  animation: 0.3s shareAnimation backwards;
 }
 .card__actions .information p {
   font-size: 1rem;
@@ -107,21 +90,34 @@ body {
   color: #9eafc2;
   font-size: 0.9rem;
 }
-.card__actions .share-button {
-  width: 2.5rem;
-  height: 2.5rem;
-  border: none;
-  margin-left: auto;
-  border-radius: 50%;
-  color: #6d7f97;
-  font-size: 1.2rem;
-  background-color: #ecf2f8;
-  outline: none;
+.card__actions--shared {
+  height: 5rem;
+  padding: 0.8rem 2.2rem;
+  display: flex;
+  align-items: center;
+  opacity: 0;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  transform: translateY(7rem);
+  background-color: #48556a;
+}
+.card__actions--shared .shared-options {
+  display: flex;
+  align-items: center;
+}
+.card__actions--shared .shared-options p {
+  letter-spacing: 0.4rem;
+  color: #9eafc2;
+}
+.card__actions--shared .shared-options a:hover {
   cursor: pointer;
 }
-.card__actions .share-button:hover {
+.card__actions--shared .shared-options a i {
+  margin-left: 1.2rem;
+  font-size: 1.5rem;
   color: #ecf2f8;
-  background-color: #6d7f97;
 }
 @media (min-width: 768px) {
   .card {
@@ -131,6 +127,7 @@ body {
     display: grid;
     grid-template-columns: 0.7fr 1fr;
     grid-template-rows: 0.8fr 0.4fr;
+    overflow: initial;
   }
   .card__image {
     max-height: 25rem;
@@ -152,6 +149,7 @@ body {
     font-size: 1.1rem;
   }
   .card__actions {
+    position: relative;
     grid-column: 2/3;
     grid-row: 2/3;
     padding: 0rem 3rem 1.7rem;
@@ -176,29 +174,63 @@ body {
     height: 3rem;
     font-size: 1.4rem;
   }
+  .card__actions--shared {
+    height: 3rem;
+    width: 13rem;
+    position: absolute;
+    bottom: 8rem;
+    left: 47rem;
+    transform: translateY(7rem);
+    border-radius: 1rem;
+  }
+  .card__actions--shared::before {
+    content: "";
+    width: 1.3rem;
+    height: 1.3rem;
+    position: absolute;
+    bottom: -0.6rem;
+    left: 45%;
+    background-color: #48556a;
+    transform: rotate(45deg);
+  }
 }
 
-.active {
-  animation: 0.2s opacityAnimation;
-  background-color: #48556a;
+.share-button {
+  position: relative;
+  z-index: 1;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: none;
+  margin-left: auto;
+  border-radius: 50%;
+  color: #6d7f97;
+  font-size: 1.2rem;
+  background-color: #ecf2f8;
+  outline: none;
+  cursor: pointer;
 }
-.active .share-button {
+.share-button:hover {
   color: #ecf2f8;
   background-color: #6d7f97;
 }
-.active .share-button:hover {
-  color: #6d7f97;
-  background-color: #ecf2f8;
-}
 
-@keyframes shareAnimation {
+@keyframes shareOpen {
   0% {
-    transform: translateY(10rem);
+    transform: translateY(7rem);
     opacity: 0;
   }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
-@keyframes opacityAnimation {
+@keyframes shareClose {
   0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(7rem);
     opacity: 0;
   }
 }
